@@ -5,7 +5,7 @@
 
 
 ### Sketch
-<img src = "sketch.jpg">
+<img src = "sketch.png">
 
 ### Main Functions To be Supported
 1.) Points on collecting each apple.<br>
