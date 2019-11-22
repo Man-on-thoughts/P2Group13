@@ -1,6 +1,6 @@
 # GottaCatch'emALL
 ### Team Members & Responsibilites
-<img src = "group15.jpg">
+<img src = "group.13.jpg">
 <caption>Anubhav Tiwari (Developer); Ayodeji Ejiade (UI/UX Developer); Zacharias E. Alaniz (Team Leader); Vaidehi Piyush Pandya (Developer/QA Tester) Aneesha Baby(Developer)</caption>
 
 
