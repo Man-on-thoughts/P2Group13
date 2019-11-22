@@ -47,3 +47,7 @@
 </table>
 
 - - - -
+
+### Plan to move forward
+
+Design of the game is completed and we have started working on implementing the game using HTML5, CSS and javascript. We will be using handtrack.js to implement hand gesture control in this game.
