@@ -8,12 +8,12 @@
 <img src = "sketch.jpg">
 
 ### Main Functions To be Supported
-1.) Points on collecting each apple.
-2.) Milestones or Target Score to Reach Next Level.
-3.) Game over when you lose 3 lives (or three apples couldn't be collected).
-4.) Game over when timer runs out and level target is not reached.
-5.) Difficulty increases as levels increase.
-6.) Hand Gesture Control of the Basket (Based on Webcam).
+1.) Points on collecting each apple.<br>
+2.) Milestones or Target Score to Reach Next Level.<br>
+3.) Game over when you lose 3 lives (or three apples couldn't be collected).<br>
+4.) Game over when timer runs out and level target is not reached.<br>
+5.) Difficulty increases as levels increase.<br>
+6.) Hand Gesture Control of the Basket (Based on Webcam).<br>
 
 ### Implementation
 <table width="100%">
