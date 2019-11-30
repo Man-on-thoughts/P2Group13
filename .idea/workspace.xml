@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d9e4930-4699-41a3-b8b2-a5b3df9c4657" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/game13/images/icons8-pause-64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game13/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/game13/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1575145992976</updated>
       <workItem from="1575145995441" duration="3015000" />
+      <workItem from="1575151293652" duration="101000" />
     </task>
     <servers />
   </component>
