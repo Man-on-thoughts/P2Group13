@@ -9,6 +9,9 @@ body {
     overflow: hidden;
 }
 
+.pauseicon{
+}
+
 .infordisplay {
     position: absolute;
     margin: 2vw;
