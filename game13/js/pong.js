@@ -134,8 +134,13 @@ windowWidth = window.innerWidth
 var bounceClip = new Audio('http://victordibia.com/skyfall/bounce.wav');
 bounceClip.type = 'audio/wav';
 var enableAudio = false;
-var pauseGame = false;
+
 var pauseGameAnimationDuration = 500;
+
+var pauseGame = false;
+
+var endGame = false;
+
 
 $("input#sound").click(function () {
     enableAudio = $(this).is(':checked')
@@ -270,7 +275,12 @@ planck.testbed(function (testbed) {
     }
 
     function updateScoreBox(points) {
-        if (!pauseGame) {
+        if (playerScore>=20){
+            endCurrentGame()
+        }
+
+
+        if (!pauseGame && !endGame) {
             playerScore += points;
             $(".scorevalue").text(playerScore)
             pointsAdded = points > 0 ? "+" + points : points
@@ -286,10 +296,50 @@ planck.testbed(function (testbed) {
                 }).hide()
             });
         }
+
+
     }
+
+
+
+
+    //end game
+
+
+    function endCurrentGame() {
+        endGame = true
+
+        if (endGame) {
+            paddle.setLinearVelocity(Vec2(0, 0))
+            $(".pauseoverlay").show()
+            $(".overlaycenter").html("<div>Game Finished</div><img id=\"pauseButton\" src=\"images/pause.png\" alt=\"pause button\">")
+
+            $(".overlaycenter").animate({
+                opacity: 1,
+                fontSize: "4vw"
+            }, pauseGameAnimationDuration, function () {});
+        } else {
+            paddle.setLinearVelocity(Vec2(3, 0))
+
+            $(".overlaycenter").animate({
+                opacity: 0,
+                fontSize: "0vw"
+            }, pauseGameAnimationDuration, function () {
+                $(".pauseoverlay").hide()
+            });
+        }
+
+    }
+
+
+
+    //end game
+
+
 
     function pauseGamePlay() {
         pauseGame = !pauseGame
+
         if (pauseGame) {
             paddle.setLinearVelocity(Vec2(0, 0))
             $(".pauseoverlay").show()
@@ -311,6 +361,9 @@ planck.testbed(function (testbed) {
         }
 
     }
+
+
+
 
     // process mouse move and touch events
     function mouseMoveHandler(event) {
