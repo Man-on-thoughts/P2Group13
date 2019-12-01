@@ -293,7 +293,8 @@ planck.testbed(function (testbed) {
         if (pauseGame) {
             paddle.setLinearVelocity(Vec2(0, 0))
             $(".pauseoverlay").show()
-            $(".overlaycenter").text("Game Paused")
+            $(".overlaycenter").html("<div>Game Paused</div><img id=\"pauseButton\" src=\"images/pause.png\" alt=\"pause button\">")
+
             $(".overlaycenter").animate({
                 opacity: 1,
                 fontSize: "4vw"
@@ -356,7 +357,14 @@ planck.testbed(function (testbed) {
                 $("input#sound").click()
             }
         }
-
+        // var pauseButton = document.getElementById("pauseButton")
+        // pauseButton.onclick = pauseGamePlay
+        document.onclick = function(e) {
+            var e = e.target.id;
+            if(e == 'pauseButton') {
+                pauseGamePlay()
+            }
+        }
         var ground = world.createBody();
         var groundY = -(0.3 * SPACE_HEIGHT)
         // ground.createFixture(pl.Edge(Vec2(-(0.95 * SPACE_WIDTH / 2), groundY), Vec2((0.95 * SPACE_WIDTH / 2), groundY)), 0.0);
@@ -548,3 +556,7 @@ function convertToRange(value, srcRange, dstRange) {
     return (adjValue * dstMax / srcMax) + dstRange[0];
 
 }
+
+
+var pauseButton = document.getElementById('pauseButton')
+pauseButton.onclick = console.log('hi')
