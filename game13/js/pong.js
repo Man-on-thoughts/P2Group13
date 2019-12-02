@@ -550,17 +550,17 @@ planck.testbed(function (testbed) {
 
             if (randVal > 0.8) {
                 //   green ball, + 20
-                beadColor.fill = '#32CD32'
+                beadColor.fill = '#ff0000'
                 beadWidthFactor = 0.007
                 fd.userData.points = 20;
             } else if (randVal < 0.2) {
                 //  Red Ball, - 10
                 beadWidthFactor = 0.007
-                beadColor.fill = '#ff0000'
+                beadColor.fill = '#32CD32'
                 fd.userData.points = -10;
             } else {
                 // White ball +10
-                beadColor.fill = '#fff'
+                beadColor.fill = '#ff0000'
                 beadWidthFactor = 0.007
                 fd.userData.points = 10;
             }
