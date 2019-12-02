@@ -275,7 +275,7 @@ planck.testbed(function (testbed) {
     }
 
     function updateScoreBox(points) {
-        if (playerScore>=20){
+        if (playerScore>=200){
             endCurrentGame()
         }
 
@@ -295,44 +295,70 @@ planck.testbed(function (testbed) {
                     opacity: 1
                 }).hide()
             });
+
+            updateProgress()
         }
 
 
     }
+
+
+
+
+
+
+
+
+
+    const [...barEls] = document.querySelectorAll(`.progress > .progress-bar`);// collection to array
+
+    function updateProgress() {
+
+
+        //let value = e.target.value;
+        let value = (playerScore/1000)*100;
+        const maxVals = [33.3, 33.3, 33.3];// max width values of elements
+
+        for (let i = 0; i < barEls.length; i++) {
+            if (value > maxVals[i]) {
+                updateElWidth(barEls[i], maxVals[i]);
+                value -= maxVals[i];
+            } else {
+                updateElWidth(barEls[i], value);
+                barEls.slice(i + 1).forEach(bar => updateElWidth(bar, 0));// nullify rest bars
+                break;
+            }
+        }
+
+        function updateElWidth(el, width) {
+            el.style.width = `${width}%`;
+        }
+    }
+
+    //////const rangeEl = document.getElementById(`range`);
+    //////[`input`, `change`].forEach(event => rangeEl.addEventListener(event, updateProgress));
+
+
+
+
 
 
 
 
     //end game
-
-
     function endCurrentGame() {
         endGame = true
-
         if (endGame) {
             paddle.setLinearVelocity(Vec2(0, 0))
             $(".pauseoverlay").show()
-            $(".overlaycenter").html("<div>Game Finished</div><img id=\"pauseButton\" src=\"images/pause.png\" alt=\"pause button\">")
+            $(".overlaycenter").html("<div>Level Completed <br/> <center><button id=\"continueButton\">Continue</button></center></div>")
 
             $(".overlaycenter").animate({
                 opacity: 1,
                 fontSize: "4vw"
             }, pauseGameAnimationDuration, function () {});
-        } else {
-            paddle.setLinearVelocity(Vec2(3, 0))
-
-            $(".overlaycenter").animate({
-                opacity: 0,
-                fontSize: "0vw"
-            }, pauseGameAnimationDuration, function () {
-                $(".pauseoverlay").hide()
-            });
         }
-
     }
-
-
-
     //end game
 
 
@@ -344,14 +370,12 @@ planck.testbed(function (testbed) {
             paddle.setLinearVelocity(Vec2(0, 0))
             $(".pauseoverlay").show()
             $(".overlaycenter").html("<div>Game Paused</div><img id=\"pauseButton\" src=\"images/pause.png\" alt=\"pause button\">")
-
             $(".overlaycenter").animate({
                 opacity: 1,
                 fontSize: "4vw"
             }, pauseGameAnimationDuration, function () {});
         } else {
             paddle.setLinearVelocity(Vec2(3, 0))
-
             $(".overlaycenter").animate({
                 opacity: 0,
                 fontSize: "0vw"
@@ -359,15 +383,11 @@ planck.testbed(function (testbed) {
                 $(".pauseoverlay").hide()
             });
         }
-
     }
-
-
-
 
     // process mouse move and touch events
     function mouseMoveHandler(event) {
-        if (!pauseGame) {
+        if (!pauseGame && !endGame) {
             mouseX = convertToRange(event.clientX, windowXRange, worldXRange);
             if (!isNaN(mouseX)) {
                 lineaVeloctiy = Vec2((mouseX - paddle.getPosition().x) * accelFactor, 0)
@@ -423,6 +443,46 @@ planck.testbed(function (testbed) {
         // ground.createFixture(pl.Edge(Vec2(-(0.95 * SPACE_WIDTH / 2), groundY), Vec2((0.95 * SPACE_WIDTH / 2), groundY)), 0.0);
     }
 
+//     function addPaddle() {
+//         paddle = world.createBody({
+//             type: "kinematic",
+//             filterCategoryBits: PADDLE,
+//             filterMaskBits: BEAD,
+//             position: Vec2(-(0.4 * SPACE_WIDTH / 2), -(0.25 * SPACE_HEIGHT))
+//         })
+//         paddleLines = [
+//             [1.8, -0.1],
+//             [1.8, 0.1],
+//             [1.2, 0.4],
+//             [0.4, 0.6],
+//             [-2.4, 0.6],
+//             [-3.2, 0.4],
+//             [-3.8, 0.1],
+//             [-3.8, -0.1]
+//         ]
+//
+//         n = 10, radius = SPACE_WIDTH * 0.03, paddlePath = [], paddlePath = []
+//
+//         paddleLines.forEach(function (each) {
+//             paddlePath.push(Vec2(radius * each[0], radius * each[1]))
+//         })
+//
+//         paddle.createFixture(pl.Polygon(paddlePath), paddleFixedDef)
+//         paddle.render = {
+//
+// //             img.onload = function() {
+// //             div.appendChild(img);
+// // };
+// //             var img = new Image();
+// //             img.src = '../images/basket.svg'
+//
+//
+//             fill: '#ff8800',
+//             stroke: '#000000'
+//         }
+//     }
+
+
     function addPaddle() {
         paddle = world.createBody({
             type: "kinematic",
@@ -431,14 +491,12 @@ planck.testbed(function (testbed) {
             position: Vec2(-(0.4 * SPACE_WIDTH / 2), -(0.25 * SPACE_HEIGHT))
         })
         paddleLines = [
-            [1.8, -0.1],
-            [1.8, 0.1],
-            [1.2, 0.4],
-            [0.4, 0.6],
-            [-2.4, 0.6],
+            [.4, -.2],
+            [1.2, .4],
+            [1.2, 1.5],
+            [-3.2, 1.5],
             [-3.2, 0.4],
-            [-3.8, 0.1],
-            [-3.8, -0.1]
+            [-2.4, -.2]
         ]
 
         n = 10, radius = SPACE_WIDTH * 0.03, paddlePath = [], paddlePath = []
@@ -449,22 +507,21 @@ planck.testbed(function (testbed) {
 
         paddle.createFixture(pl.Polygon(paddlePath), paddleFixedDef)
         paddle.render = {
-
-//             img.onload = function() {
-//             div.appendChild(img);
-// };
-//             var img = new Image();
-//             img.src = '../images/basket.svg' 
-
-
-            fill: '#ff8800',
+            fill: '#7c4700',
             stroke: '#000000'
         }
     }
 
+
+
+
+
     // Generate Beeds falling from sky
     function generateBeads(numCharacters) {
+        if(endGame){
+            return
 
+        }
         for (var i = 0; i < numCharacters; ++i) {
             var characterBody = world.createBody({
                 type: 'dynamic',

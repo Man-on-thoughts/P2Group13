@@ -224,3 +224,33 @@ input:checked+.slider:before {
     /* background: #ff8800;
     color: #fff; */
 }
+
+.progress {
+
+    height: 1.5rem;
+    overflow: hidden;
+    background-color: grey;
+    border-radius: .25rem;
+}
+
+.progress-bar {
+    display: inline-block;
+    height: 100%;
+}
+
+.bg-weak {
+    background-color: #d9534f;
+}
+
+.bg-good {
+    background-color: #f0ad4e !important;
+}
+
+.bg-strong {
+    background-color: #5cb85c !important;
+}
+.progress-bar li
+{
+    list-style-type:none;
+    float:left
+}

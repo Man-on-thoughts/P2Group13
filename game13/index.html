@@ -48,6 +48,26 @@
 
 
     </div>
+<!--progress Bar-->
+    <div class="infordisplay container progress-bar">
+        <ul style="position:relative ; top: 85%; left: 8%; width:215px">
+            <li class="active" style="margin-right: 25px; text-align: left;"> Level1  </li>
+            <li class="active" style="margin-right: 10px; text-align: center;">  Level2  </li>
+
+            <li class="active" style="margin-left: 10px; text-align: right;">  Level3  </li>
+
+        </ul>
+    </div>
+    //  <!--<input type="button" style="font:600px" name="next" class="next action-button" value="Next" />-->
+    <div class="infordisplay" style="position:absolute; top: 90%; right: 80%; width:215px">
+
+        <div id="progress" class="progress">
+            <div class="progress-bar bg-weak" style=" width: 0% " title="level1"></div><div class="progress-bar bg-good" style="width: 0%"></div><div class="progress-bar bg-strong" style="width: 0%"></div>
+        </div>
+
+    </div>
+<!--    progresss bar-->
+
     <video class="videobox canvasbox" autoplay="autoplay" id="myvideo"></video>
   <canvas id="canvas" class="border canvasbox"></canvas>
 
@@ -58,6 +78,14 @@
     </div>
     <script src="js/planck-with-testbed.js"></script>
     <script src="js/jquery.js"></script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+
+
     <script src="js/handtrack.min.js"> </script>
     <script src="js/pong.js"></script>
 </body>
