@@ -60,7 +60,7 @@ Design of the game is completed and we have started working on implementing the 
 3. https://github.com/tensorflow/models/tree/master/research/object_detection
 
 ### Demo Link
-https://hci13f19.000webhostapp.com/
+https://man-on-thoughts.github.io/P2Group13/game13/
 
 ### Task Description
 
