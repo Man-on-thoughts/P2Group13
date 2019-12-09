@@ -70,10 +70,30 @@ Design of the game is completed and we have started working on implementing the 
 ### Hypothesis
 
 - The User uses mouse interaction to move Basket
-
-
-
-
-
-
 - - - -
+### The Focus of this product on the users' end. 
+  * Age group: Young adults, Middle age Adults, and the Elderly. 
+  * Gender Friendly
+  * Language: English 
+  * Education: Must have experience with a smart phone or tablet to use this device.
+  * Cultural Background: Culture friendly* Job: For the common person
+ - - - - 
+### Novice users
+  * User friendly 
+  * simple to user
+- - - - 
+### Knowledegable users 
+  * General knowledge and easy to use
+  * Perform daily tasks with ease
+- - - -
+### Expert users 
+* Familar with smart devices 
+* task oriented
+- - - -
+### The Actions of the Smart mirror
+* Watching youtube videos 
+* Displays current location weather
+* Plays a streaming music platform 
+* Tells the time and Date
+* Taking selfies 
+- - - - 
