@@ -90,10 +90,9 @@ Design of the game is completed and we have started working on implementing the 
 * Familar with smart devices 
 * task oriented
 - - - -
-### The Actions of the Smart mirror
-* Watching youtube videos 
-* Displays current location weather
-* Plays a streaming music platform 
-* Tells the time and Date
-* Taking selfies 
+### The Actions of the Game
+* Move the basket with mouse to collect apples
+* Control the basket with movement of hand
+* Each apples has certain points associated with it.
+* The objective is to collect as many points as possible to proceed to next levels within stipulated time.
 - - - - 
