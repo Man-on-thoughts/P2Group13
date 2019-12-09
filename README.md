@@ -32,16 +32,16 @@
 
 
 <tr>
-<td>Implementation or Coding</td><td> In progress</td><td>Testing</td>
+<td>Implementation or Coding</td><td>Completed</td><td>Testing</td>
 </tr>
 
 
 <tr>
-<td>Testing</td><td>TBA</td><td>Deployment</td>
+<td>Testing</td><td>Completed</td><td>Deployment</td>
 </tr>
 
 <tr>
-<td>Deployment</td><td>TBA</td><td>Presentation</td>
+<td>Deployment</td><td>Completed</td><td>Presentation</td>
 </tr>
 
 
@@ -70,10 +70,28 @@ Design of the game is completed and we have started working on implementing the 
 ### Hypothesis
 
 - The User uses mouse interaction to move Basket
-
-
-
-
-
-
 - - - -
+### The Focus of this product on the users' end. 
+  * Age group: Childern 7-13 
+  * Gender Friendly
+  * Language: English 
+  * Education: Must have a clear concept of elementry level mathematics
+  * Cultural Background: Culture friendly
+  * Job: not relevant
+ - - - - 
+### Novice users
+  * User friendly 
+  * simple to user
+- - - - 
+### Knowledegable users 
+  * General knowledge and easy
+- - - -
+### Expert users 
+* should have no problems with this game
+- - - -
+### The Actions of the Game
+* Move the basket with mouse to collect apples
+* Control the basket with movement of hand
+* Each apples has certain points associated with it.
+* The objective is to collect as many points as possible to proceed to next levels within stipulated time.
+- - - - 
