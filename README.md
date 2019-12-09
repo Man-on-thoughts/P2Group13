@@ -72,23 +72,22 @@ Design of the game is completed and we have started working on implementing the 
 - The User uses mouse interaction to move Basket
 - - - -
 ### The Focus of this product on the users' end. 
-  * Age group: Young adults, Middle age Adults, and the Elderly. 
+  * Age group: Childern 7-13 
   * Gender Friendly
   * Language: English 
-  * Education: Must have experience with a smart phone or tablet to use this device.
-  * Cultural Background: Culture friendly* Job: For the common person
+  * Education: Must have a clear concept of elementry level mathematics
+  * Cultural Background: Culture friendly
+  * Job: not relevant
  - - - - 
 ### Novice users
   * User friendly 
   * simple to user
 - - - - 
 ### Knowledegable users 
-  * General knowledge and easy to use
-  * Perform daily tasks with ease
+  * General knowledge and easy
 - - - -
 ### Expert users 
-* Familar with smart devices 
-* task oriented
+* should have no problems with this game
 - - - -
 ### The Actions of the Game
 * Move the basket with mouse to collect apples
