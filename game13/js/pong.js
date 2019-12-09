@@ -8,6 +8,9 @@ let imgindex = 1
 let isVideo = false;
 let model = null;
 let videoInterval = 100
+let gameLevel = 1
+let finishGamePlay = false
+let levelScore = 200
 
 // video.width = 500
 // video.height = 400
@@ -17,7 +20,8 @@ $(".pauseoverlay").show()
 $(".overlaycenter").animate({
     opacity: 1,
     fontSize: "4vw"
-}, pauseGameAnimationDuration, function () {});
+}, pauseGameAnimationDuration, function () {
+});
 
 const modelParams = {
     flipHorizontal: true, // flip e.g for video  
@@ -52,11 +56,9 @@ function toggleVideo() {
 }
 
 
-
 trackButton.addEventListener("click", function () {
     toggleVideo();
 });
-
 
 
 function runDetection() {
@@ -83,7 +85,7 @@ function runDetection() {
 handTrack.load(modelParams).then(lmodel => {
     // detect objects in the image.
     model = lmodel
-    updateNote.innerText = "Loaded Model!"
+    updateNote.innerText = ""
     trackButton.disabled = false
 
     $(".overlaycenter").animate({
@@ -124,8 +126,6 @@ var BEAD_RESTITUTION = 0.7
 accelFactor = 0.042 * SPACE_WIDTH;
 
 
-
-
 var paddleMap = new Map();
 var maxNumberPaddles = 10;
 windowHeight = window.innerHeight
@@ -150,7 +150,6 @@ $("input#sound").click(function () {
 
 
 function updatePaddleControl(x) {
-    // gamex = x;
     let mouseX = convertToRange(x, windowXRange, worldXRange);
     let lineaVeloctiy = Vec2((mouseX - paddle.getPosition().x) * accelFactor, 0)
     // paddle.setLinearVelocity(lineaVeloctiy)
@@ -159,7 +158,6 @@ function updatePaddleControl(x) {
     paddle.setLinearVelocity(lineaVeloctiy)
     console.log("linear velocity", lineaVeloctiy.x, lineaVeloctiy.y)
 }
-
 
 
 planck.testbed(function (testbed) {
@@ -210,14 +208,13 @@ planck.testbed(function (testbed) {
         console.log("ready!");
         scoreDiv = document.createElement('div');
         $(scoreDiv).addClass("classname")
-            .text("bingo")
-            .appendTo($("body")) //main div
+            .text("")
+            .appendTo($("body"))
     });
 
     function start() {
         addUI()
     }
-
 
 
     // Remove paddles that are no longer in frame.
@@ -275,7 +272,14 @@ planck.testbed(function (testbed) {
     }
 
     function updateScoreBox(points) {
-        if (playerScore>=200){
+        if (gameLevel >= 3 && playerScore >= 3 * levelScore) {
+            finishGame()
+
+        }
+
+        console.log(gameLevel)
+        if (playerScore >= gameLevel * levelScore) {
+            gameLevel++
             endCurrentGame()
         }
 
@@ -303,20 +307,13 @@ planck.testbed(function (testbed) {
     }
 
 
-
-
-
-
-
-
-
     const [...barEls] = document.querySelectorAll(`.progress > .progress-bar`);// collection to array
 
     function updateProgress() {
 
 
         //let value = e.target.value;
-        let value = (playerScore/1000)*100;
+        let value = (playerScore / (levelScore * 3)) * 100;
         const maxVals = [33.3, 33.3, 33.3];// max width values of elements
 
         for (let i = 0; i < barEls.length; i++) {
@@ -339,41 +336,55 @@ planck.testbed(function (testbed) {
     //////[`input`, `change`].forEach(event => rangeEl.addEventListener(event, updateProgress));
 
 
-
-
-
-
-
-
     //end game
-    function endCurrentGame() {
+
+    function finishGame() {
         endGame = true
+        finishGamePlay = true
         if (endGame) {
             paddle.setLinearVelocity(Vec2(0, 0))
             $(".pauseoverlay").show()
-            $(".overlaycenter").html("<div>Level Completed <br/> <center><button id=\"continueButton\">Continue</button></center></div>")
-
+            $(".overlaycenter").html("<div><center>Congrats, Game Completed<br/><center><a class=\"w3-button w3-black\"  onclick = \"window.location.reload()\">Restart</a></center></div>")
             $(".overlaycenter").animate({
                 opacity: 1,
                 fontSize: "4vw"
-            }, pauseGameAnimationDuration, function () {});
+            }, pauseGameAnimationDuration, function () {
+            });
         }
     }
+
+
+    function endCurrentGame() {
+        endGame = true
+        if (endGame && !finishGamePlay) {
+            paddle.setLinearVelocity(Vec2(0, 0))
+            $(".pauseoverlay").show()
+            $(".overlaycenter").html("<div><center>Level Completed<br/><center><a class=\"w3-button w3-black\" href=\"#\" id = \"pauseButton\">Continue</a></center></div>")
+            $(".overlaycenter").animate({
+                opacity: 1,
+                fontSize: "4vw"
+            }, pauseGameAnimationDuration, function () {
+            });
+        }
+    }
+
     //end game
 
 
-
     function pauseGamePlay() {
-        pauseGame = !pauseGame
+        if (!endGame) {
+            pauseGame = !pauseGame
+        }
 
         if (pauseGame) {
             paddle.setLinearVelocity(Vec2(0, 0))
             $(".pauseoverlay").show()
-            $(".overlaycenter").html("<div>Game Paused</div><img id=\"pauseButton\" src=\"images/pause.png\" alt=\"pause button\">")
+            $(".overlaycenter").html("<div><center>Game Paused<br/><center><a class=\"w3-button w3-black\" href=\"#\" id = \"pauseButton\">Continue</a></center></div>")
             $(".overlaycenter").animate({
                 opacity: 1,
                 fontSize: "4vw"
-            }, pauseGameAnimationDuration, function () {});
+            }, pauseGameAnimationDuration, function () {
+            });
         } else {
             paddle.setLinearVelocity(Vec2(3, 0))
             $(".overlaycenter").animate({
@@ -381,6 +392,7 @@ planck.testbed(function (testbed) {
                 fontSize: "0vw"
             }, pauseGameAnimationDuration, function () {
                 $(".pauseoverlay").hide()
+                endGame = false;
             });
         }
     }
@@ -432,9 +444,9 @@ planck.testbed(function (testbed) {
         }
         // var pauseButton = document.getElementById("pauseButton")
         // pauseButton.onclick = pauseGamePlay
-        document.onclick = function(e) {
+        document.onclick = function (e) {
             var e = e.target.id;
-            if(e == 'pauseButton') {
+            if (e == 'pauseButton') {
                 pauseGamePlay()
             }
         }
@@ -513,12 +525,9 @@ planck.testbed(function (testbed) {
     }
 
 
-
-
-
     // Generate Beeds falling from sky
     function generateBeads(numCharacters) {
-        if(endGame){
+        if (endGame) {
             return
 
         }

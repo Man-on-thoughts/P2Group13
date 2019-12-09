@@ -7,12 +7,13 @@
     <title>Pong Game. </title>
     <link rel="stylesheet" href="css/carbon-components.css" />
     <link rel="stylesheet" href="css/pong.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body class="bx--body p20">
     <div class="infordisplay ">
         <div class="toprow">
-            <img src="http://victordibia.com/skyfall/icon.png" class="icon  floatleft " />
+<!--            <img src="http://victordibia.com/skyfall/icon.png" class="icon  floatleft " />-->
             <div class="scorebox  iblock ">
                 <div class="scorevalue inscore"> 0 </div>
                 <div class="scorelabel inscore"> pts </div>
@@ -27,8 +28,10 @@
                 <div class="iblock floatleft">
                     <label class="switch">
                         <input type="checkbox" id="sound">
-                        <span class="slider round"></span>
+                        <span class="slider"></span>
                     </label>
+
+
                 </div>
                 <div class="  iblock soundofftext"> sound off</div>
                 <div class="clear"></div>
@@ -37,20 +40,24 @@
         </div>
 
         <div class="pausetext">
-            <div><img src="images/mute.png" alt="sound button"><br></div>
-            <div> <img id="pauseButton" src="images/pause.png" alt="pause button"> </div>
+<!--            <div><img src="images/mute.png" alt="sound button"><br></div>-->
+            <div>
+<!--                <button type="button" id = "pauseButton" class="btn btn-dark">Dark</button>-->
+                <a class="w3-button w3-black pause handbutton" href="#" id = "pauseButton">Pause</a>
+            </div>
+
         </div>
 
-        <div id="updatenote" class="updatenote mt10"> loading model ..</div>
-        <button  id="trackbutton" class="bx--btn bx--btn--secondary mt10 trackbutton" type="button" disabled>
-                Toggle Video Control ..
+        <div id="updatenote" class="updatenote mt10"></div>
+        <button  id="trackbutton" class="w3-button w3-black handbutton" type="button" disabled>
+                Toggle
               </button>
 
 
     </div>
 <!--progress Bar-->
     <div class="infordisplay container progress-bar">
-        <ul style="position:relative ; top: 85%; left: 8%; width:215px">
+        <ul style="position:relative; top: 85%; left: 8%; width:215px">
             <li class="active" style="margin-right: 25px; text-align: left;"> Level1  </li>
             <li class="active" style="margin-right: 10px; text-align: center;">  Level2  </li>
 
@@ -58,11 +65,11 @@
 
         </ul>
     </div>
-    //  <!--<input type="button" style="font:600px" name="next" class="next action-button" value="Next" />-->
+     <!--<input type="button" style="font:600px" name="next" class="next action-button" value="Next" />-->
     <div class="infordisplay" style="position:absolute; top: 90%; right: 80%; width:215px">
 
         <div id="progress" class="progress">
-            <div class="progress-bar bg-weak" style=" width: 0% " title="level1"></div><div class="progress-bar bg-good" style="width: 0%"></div><div class="progress-bar bg-strong" style="width: 0%"></div>
+            <div class="progress-bar bg-weak" style=" width: 0%;" title="level1"></div><div class="progress-bar bg-good" style="width: 0%"></div><div class="progress-bar bg-strong" style="width: 0%"></div>
         </div>
 
     </div>
@@ -73,9 +80,10 @@
 
     <div class="pauseoverlay">
         <div class="overlaycenter">
-            Loading Handtrack.js Model ..
-        </div>
-    </div>
+            <center><div class="lds-ring"><div></div><div></div><div></div><div></div></div></center>
+
+            </div></div>
+
     <script src="js/planck-with-testbed.js"></script>
     <script src="js/jquery.js"></script>
 
