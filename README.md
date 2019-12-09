@@ -32,16 +32,16 @@
 
 
 <tr>
-<td>Implementation or Coding</td><td> In progress</td><td>Testing</td>
+<td>Implementation or Coding</td><td>Completed</td><td>Testing</td>
 </tr>
 
 
 <tr>
-<td>Testing</td><td>TBA</td><td>Deployment</td>
+<td>Testing</td><td>Completed</td><td>Deployment</td>
 </tr>
 
 <tr>
-<td>Deployment</td><td>TBA</td><td>Presentation</td>
+<td>Deployment</td><td>Completed</td><td>Presentation</td>
 </tr>
 
 
